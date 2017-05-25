@@ -31,23 +31,23 @@ login api will set a cookie with jwt token for authentication ( include this coo
     requestBody -> {"userEmail":"archit@grr.la","password":"name"}
     headers -> Content-Type : application/json , Accept : application/json
 
-3 - POST /api/v1/addProduct
+3 - POST /api/v1/addProduct (for adding new product)
     requestBody -> {"name":"product1","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
     cookie 
 
-4 - PATCH /api/v1/editProduct
+4 - PATCH /api/v1/editProduct (for editing product)
     requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
     cookie
 
-5 - GET /api/v1/viewProduct?code=x
+5 - GET /api/v1/viewProduct?code=x  (for listing product)
     cookie
 
-6 - GET /api/v1/viewAllProducts
+6 - GET /api/v1/viewAllProducts  (for listing all products)
     cookie
 
-7 - DELETE /api/v1/deleteProduct
+7 - DELETE /api/v1/deleteProduct  (for deleting product)
     requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
     cookie
