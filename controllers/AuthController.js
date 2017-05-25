@@ -54,6 +54,9 @@ var auth = {
      }
      var newuser = new user({'userEmail':userEmail,'password' : password,'name':name});
      newuser.save(function(err,user) {
+       if(err) {
+         res.json("status":401,"msg":"Some Internal error in creating user.");
+       }
        res.json(user).end();
        return;
      });
