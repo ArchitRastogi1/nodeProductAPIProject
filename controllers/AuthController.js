@@ -7,14 +7,14 @@ var auth = {
       var password = req.body.password || '';
       if(userEmail == '' || password == '') {
         res.status(401);
-        res.json({"status" : false, "msg" : 'Invalid Login Credential'}).end();
+        res.json({"status" : 401, "msg" : 'Invalid Login Credential'}).end();
         return ;
       }
 
       auth.validate(userEmail,password,function(err,user){
         if(!user) {
           res.status(401);
-          res.json({"status" : false, "msg" : 'Invalid Login Credential'}).end();
+          res.json({"status" : 401, "msg" : 'Invalid Login Credential'}).end();
         } else {
           var token = genToken(user);
           res.cookie('token', token, { maxAge: 900000, httpOnly: true });
@@ -49,7 +49,7 @@ var auth = {
      var name = req.body.name || '';
      if(userEmail == '' || password == '' || name == '') {
        res.status(400);
-       res.json({"status" : false, "msg" : 'Invalid signup data'}).end();
+       res.json({"status" : 400, "msg" : 'Invalid signup data'}).end();
        return ;
      }
      var newuser = new user({'userEmail':userEmail,'password' : password,'name':name});

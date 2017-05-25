@@ -7,12 +7,12 @@ module.exports.addProduct = function(req,res,next) {
   var newProduct = new product(req.body);
   var error = validator.validateAddProductData(req);
   if(error) {
-    res.status(400).json({"status":false,"msg": error}).end();
+    res.status(400).json({"status":400,"msg": error}).end();
     return;
   }
   newProduct.save(function(err,product){
     if(err) {
-      res.status(500).json({"status" : false,"msg" : err.errmsg}).end();
+      res.status(500).json({"status" : 500,"msg" : err.errmsg}).end();
       return;
     }
     if(product) {
@@ -28,12 +28,12 @@ module.exports.addProduct = function(req,res,next) {
 module.exports.deleteProduct = function(req,res,next) {
   var error = validator.validateDeleteProductData(req);
   if(error) {
-    res.status(400).json({"status":false,"msg": error}).end();
+    res.status(400).json({"status":400,"msg": error}).end();
     return;
   }
   product.findOneAndRemove({code:req.body.code},function(err,product){
     if(err) {
-      res.status(500).json({"status" : false,"msg" : 'Internal error in deleting product'}).end();
+      res.status(500).json({"status" : 500,"msg" : 'Internal error in deleting product'}).end();
       return;
     }
     if(product) {
@@ -49,12 +49,12 @@ module.exports.deleteProduct = function(req,res,next) {
 module.exports.viewProduct = function(req,res,next) {
   var error = validator.validateViewProductData(req);
   if(error) {
-    res.status(400).json({"status":false,"msg" : error}).end();
+    res.status(400).json({"status":400,"msg" : error}).end();
     return;
   }
   product.findOne({code:req.query.code},function(err,product){
       if(err) {
-        res.status(500).json({"status" : false,"msg" : 'Internal error in fetching product'}),end();
+        res.status(500).json({"status" : 500,"msg" : 'Internal error in fetching product'}),end();
         return;
       }
       if(product) {
@@ -70,7 +70,7 @@ module.exports.viewProduct = function(req,res,next) {
 module.exports.viewAllProducts = function(req,res,next) {
   product.find({},function(err,products){
       if(err) {
-        res.status(500).json({"status" : false,"msg" : 'Internal error in fetching product'}).end();
+        res.status(500).json({"status" : 500,"msg" : 'Internal error in fetching product'}).end();
         return;
       }
       if(products) {
@@ -86,12 +86,12 @@ module.exports.viewAllProducts = function(req,res,next) {
 module.exports.editProduct = function(req,res,next) {
   var error = validator.validateEditProductData(req);
   if(error) {
-    res.status(400).json({"status":false,"msg": error}).end();
+    res.status(400).json({"status":400,"msg": error}).end();
     return;
   }
   product.findOneAndUpdate({code:req.body.code},req.body,function(err,product){
     if(err) {
-      res.status(500).json({"status" : false,"msg" : 'Internal error in editing produc'}).end();
+      res.status(500).json({"status" : 500,"msg" : 'Internal error in editing produc'}).end();
       return;
     }
     if(product) {

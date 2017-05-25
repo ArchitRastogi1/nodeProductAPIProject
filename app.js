@@ -48,7 +48,7 @@ app.use('/api/v1', authenticatedRoute);
 /* for handling wrong urls */
 app.use('/*',function(req,res,next){
   res.status(404);
-  res.json({"status":false,"msg":"Please give correct api url"}).end();
+  res.json({"status":404,"msg":"Please give correct api url"}).end();
 });
 
 app.listen(process.env.PORT || 5000)
