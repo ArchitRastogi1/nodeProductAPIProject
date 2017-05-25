@@ -11,7 +11,7 @@
     This is for running test case
     
 ### Application - 
-1.The apis are designed using node.js and mongoose.
+1.The apis are designed using node.js and mongoose (hosted on mlab.com).
 
 2.Mocha and Chai used for writing Integration Tests.
 
