@@ -1,0 +1,23 @@
+{
+  "name": "shoppingcart",
+  "version": "1.0.0",
+  "description": "APIs for shopping cart, to be consumed by mobile app",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --timeout=50000"
+  },
+  "author": "Archit Rastogi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "jwt-simple": "^0.5.1",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.10.1",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.8.1"
+  }
+}
