@@ -1,21 +1,25 @@
 # nodeProductAPIProject
 
-Rest APIs for cart actions - 
+## Rest APIs for cart actions -
 
-Setup 
+### Setup 
+1.Install git, heroku, node.js and postman.
 
-1 - Install git, heroku, node.js and postman.
-2 - Take clone of git repository - https://github.com/ArchitRastogi1/nodeProductAPIProject
-3 - Use command  -> npm run test 
-    This is for running test cases.
+2.Take clone of git repository - https://github.com/ArchitRastogi1/nodeProductAPIProject
+
+3.Use command  -> npm run test 
+    This is for running test case
     
-Application - 
-# The apis are designed using node.js and mongoose.
-# Mocha and Chai used for writing Integration Tests.
-# Used JWT for authentication (here I am setting cookie using jwt because we have apis without views , otherwise I would have included jwt token in authentication header).
-# Code is deployed on heroku.
+### Application - 
+1.The apis are designed using node.js and mongoose.
+
+2.Mocha and Chai used for writing Integration Tests.
+
+3.Used JWT for authentication (here I am setting cookie using jwt because we have apis without views , otherwise I would have included jwt token in authentication header).
+
+4.Code is deployed on heroku.
     
-Rest APIs - 
+### Rest APIs -
 
 login api will set a cookie with jwt token for authentication ( include this cookie in all product apis ).
 
@@ -49,13 +53,18 @@ login api will set a cookie with jwt token for authentication ( include this coo
     cookie
    
   
-Models -
+### Models -
+
 User - userId(auto increment), userEmail, password, name, username
+
 Product - code , name, price
 
-Validations -
+### Validations -
 
 All apis - Request data should not be empty.
+
 viewProduct / deleteProduct / editProduct -> product code should not be empty.
+
 addProduct -> product code, price, name should not be empty.
+
 In case of Wrong request data , error message will be sent.
