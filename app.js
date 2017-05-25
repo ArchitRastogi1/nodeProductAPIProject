@@ -51,6 +51,6 @@ app.use('/*',function(req,res,next){
   res.json({"status":false,"msg":"Please give correct api url"}).end();
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 5000)
 
 module.exports = app;
