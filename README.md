@@ -2,26 +2,31 @@
 
 ## Rest APIs for cart actions -
 
-### Setup 
+### Setup
 1.Install git, heroku, node.js and postman.
 
 2.Take clone of git repository - https://github.com/ArchitRastogi1/nodeProductAPIProject
 
-3.Use command  -> npm run test 
+3.Use command  -> npm run test
     This is for running test case
-    
-### Application - 
+
+### Application -
 1.The apis are designed using node.js and mongoose (hosted on mlab.com).
 
 2.Mocha and Chai used for writing Integration Tests.
 
 3.Used JWT for authentication (here I am setting cookie using jwt because we have apis without views , otherwise I would have included jwt token in authentication header).
 
-4.Code is deployed on heroku.
-    
+4.Code is deployed on heroku. (https://afternoon-brook-10887.herokuapp.com/)
+
+5.Setup of docker and docker-composer. (https://cloud.docker.com/swarm/architrastogi1/repository/docker/architrastogi1/productapis/general)
+
 ### Rest APIs -
 
 login api will set a cookie with jwt token for authentication ( include this cookie in all product apis ).
+
+For running on local - run command->  npm start
+Otherwise add these path to heroku url.
 
 1 - POST /users/signup (for registering users)
     requestBody -> {"userEmail":"archit@grr.la","password":"name","name":"archit"}
@@ -34,7 +39,7 @@ login api will set a cookie with jwt token for authentication ( include this coo
 3 - POST /api/v1/addProduct (for adding new product)
     requestBody -> {"name":"product1","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
-    cookie 
+    cookie
 
 4 - PATCH /api/v1/editProduct (for editing product)
     requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
@@ -51,8 +56,8 @@ login api will set a cookie with jwt token for authentication ( include this coo
     requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
     cookie
-   
-  
+
+
 ### Models -
 
 User - userId(auto increment), userEmail, password, name, username
