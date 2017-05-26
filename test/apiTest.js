@@ -48,7 +48,7 @@ describe('Product', () => {
            let newProduct = new product({"code":1,"name":"Blah","price":"100"});
            it('it should add new product', (done) => {
              chai.request(server)
-                 .post('/api/v1/addProduct')
+                 .post('/api/v1/product')
                  .send(newProduct)
                  .set('cookie',['token=' + token])
                  .end((err, res) => {
@@ -63,7 +63,7 @@ describe('Product', () => {
             let newProduct = new product({"code":1,"name":"Blah"});
             it('it should add new product', (done) => {
               chai.request(server)
-                  .post('/api/v1/addProduct')
+                  .post('/api/v1/product')
                   .send(newProduct)
                   .set('cookie',['token=' + token])
                   .end((err, res) => {
@@ -77,7 +77,7 @@ describe('Product', () => {
       describe('/POST viewProduct', () => {
             it('it should view product', (done) => {
               chai.request(server)
-                  .get('/api/v1/viewProduct?code=1')
+                  .get('/api/v1/product?code=1')
                   .set('cookie',['token=' + token])
                   .end((err, res) => {
                       res.should.have.status(200);
@@ -90,7 +90,7 @@ describe('Product', () => {
       describe('/POST viewProduct', () => {
             it('it should view product', (done) => {
               chai.request(server)
-                  .get('/api/v1/viewProduct?code=3')
+                  .get('/api/v1/product?code=3')
                   .set('cookie',['token=' + token])
                   .end((err, res) => {
                       res.should.have.status(200);
@@ -118,7 +118,7 @@ describe('Product', () => {
               let newProduct = new product({"code":"1"});
               it('it should edit product', (done) => {
                 chai.request(server)
-                    .delete('/api/v1/deleteProduct')
+                    .delete('/api/v1/product')
                     .send(newProduct)
                     .set('cookie',['token=' + token])
                     .end((err, res) => {
@@ -133,7 +133,7 @@ describe('Product', () => {
            let newProduct = new product({"code":"2"});
            it('it should edit product', (done) => {
              chai.request(server)
-                 .delete('/api/v1/deleteProduct')
+                 .delete('/api/v1/product')
                  .send(newProduct)
                  .set('cookie',['token=' + token])
                  .end((err, res) => {
