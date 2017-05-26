@@ -4,10 +4,10 @@ var router = express.Router();
 var cartAPIs = require('../controllers/APIController');
 
 /* routes corrosponding to apis */
-router.get('/viewProduct',cartAPIs.viewProduct);
+router.get('/product',cartAPIs.viewProduct);
 router.get('/viewAllProducts',cartAPIs.viewAllProducts);
-router.patch('/editProduct',cartAPIs.editProduct);
-router.post('/addProduct',cartAPIs.addProduct);
-router.delete('/deleteProduct',cartAPIs.deleteProduct);
+router.patch('/product',cartAPIs.editProduct);
+router.post('/product',cartAPIs.addProduct);
+router.delete('/product',cartAPIs.deleteProduct);
 
 module.exports = router;

@@ -28,39 +28,21 @@ login api will set a cookie with jwt token for authentication ( include this coo
 For running on local - run command->  npm start
 Otherwise add these path to heroku url.
 
-1 - POST /users/signup (for registering users)
-    requestBody -> {"userEmail":"archit@grr.la","password":"name","name":"archit"}
-    headers -> Content-Type : application/json , Accept : application/json
 
-2 - POST /users/login (for login users).
-    requestBody -> {"userEmail":"archit@grr.la","password":"name"}
-    headers -> Content-Type : application/json , Accept : application/json
-
-3 - POST /api/v1/addProduct (for adding new product)
-    requestBody -> {"name":"product1","price":100, "code":"BWNPR"}
-    headers -> Content-Type : application/json , Accept : application/json
-    cookie ->
-    response -> {"status": 200, "msg": "Successfully added new product","productCode": "3"}
-
-
-4 - PATCH /api/v1/editProduct (for editing product)
-    requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
-    headers -> Content-Type : application/json , Accept : application/json
-    cookie ->
-    response -> {"status": 200,"msg": "Successfully edited product details"}
-
-5 - GET /api/v1/viewProduct?code=x  (for listing product)
-    cookie ->
-    response -> {"status": 200,"data": {"code": "2","name": "product1","price": 100}}
-
-
-6 - GET /api/v1/viewAllProducts  (for listing all products)
-    cookie
-
-7 - DELETE /api/v1/deleteProduct  (for deleting product)
-    requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
-    headers -> Content-Type : application/json , Accept : application/json
-    cookie
+| paths | params | methods | description  | response
+|---|---|---|---|---|
+| `/users/signup` | "userEmail":"archit@grr.la","password":"name","name":"archit"} | POST | register user | {"userId": 115,
+  "userEmail": "aaaaa@grr.la","password": "123456","name": "Archit"} |
+| `/users/login` | "userEmail":"archit@grr.la" | POST | register user | {"status":401,"message":"Invalid Login Credential"} |
+| `/users/login` | "userEmail":"archit@grr.la","password":"name"} | POST | authenticate user | sets cookie |
+| `/api/v1/product`  | {"name":"product1","price":100, "code":"BWNPR"} | POST | adds product with given data | {"status": 200, "msg": "Successfully added new product","productCode": "3"} |
+| `/api/v1/product`  | {"name":"product1", "code":"BWNPR"} | POST | adds product with given data | {"status": 400, "msg": "Please provide Product Price" |
+| `/api/v1/product` | {"price":101, "code":"BWNPR"} | PATCH | edit product | {"status": 200,"msg": "Successfully edited product details"} |
+| `/api/v1/product` | {"price":101, "code":"BWNPR"} | PATCH | edit product | {"status": 200,"msg": "Couldn't find product to update"} |
+| `/api/v1/product` | code=2 | GET | view product with given product id | {"status": 200,"data": {"code": "2","name": "product1","price": 100}} |
+| `/api/v1/product` | code=2 | GET | view product with given product id | {"status": 200,"msg": "Product does not exist"} |
+| `/api/v1/viewAllProducts` |  | GET | view all products | {"status": 200,"data": [{"code": "2","name": "product1","price": 100}]} |
+| `/api/v1/product` | {"code":"2"} | DELETE | deletes a specific item | {"status": 200,"msg": "Successfully deleted product details"} |
 
 
 ### Models -
