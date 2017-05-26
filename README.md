@@ -39,15 +39,20 @@ Otherwise add these path to heroku url.
 3 - POST /api/v1/addProduct (for adding new product)
     requestBody -> {"name":"product1","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
-    cookie
+    cookie ->
+    response -> {"status": 200, "msg": "Successfully added new product","productCode": "3"}
+
 
 4 - PATCH /api/v1/editProduct (for editing product)
     requestBody -> {"name":"product1x","price":100, "code":"BWNPR"}
     headers -> Content-Type : application/json , Accept : application/json
-    cookie
+    cookie ->
+    response -> {"status": 200,"msg": "Successfully edited product details"}
 
 5 - GET /api/v1/viewProduct?code=x  (for listing product)
-    cookie
+    cookie ->
+    response -> {"status": 200,"data": {"code": "2","name": "product1","price": 100}}
+
 
 6 - GET /api/v1/viewAllProducts  (for listing all products)
     cookie

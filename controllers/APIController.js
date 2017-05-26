@@ -16,9 +16,9 @@ module.exports.addProduct = function(req,res,next) {
       return;
     }
     if(product) {
-      res.json({"status": true, "msg" : "Successfully added new product", "productCode" : product.code});
+      res.json({"status": 200, "msg" : "Successfully added new product", "productCode" : product.code});
     } else {
-      res.json({"status":true,"msg":"Internal error in adding new product"}).end();
+      res.json({"status":200,"msg":"Internal error in adding new product"}).end();
     }
     return;
   });
@@ -37,9 +37,9 @@ module.exports.deleteProduct = function(req,res,next) {
       return;
     }
     if(product) {
-      res.json({"status":true,"msg":"Successfully deleted product", "productCode": product.code}).end();
+      res.json({"status":200,"msg":"Successfully deleted product", "productCode": product.code}).end();
     } else {
-      res.json({"status":true,"msg":"Product does not exist"}).end();
+      res.json({"status":200,"msg":"Product does not exist"}).end();
     }
     return;
   });
@@ -52,15 +52,15 @@ module.exports.viewProduct = function(req,res,next) {
     res.status(400).json({"status":400,"msg" : error}).end();
     return;
   }
-  product.findOne({code:req.query.code},function(err,product){
+  product.findOne({code:req.query.code},{_id:0},function(err,product){
       if(err) {
         res.status(500).json({"status" : 500,"msg" : 'Internal error in fetching product'}),end();
         return;
       }
       if(product) {
-        res.json({"status":true,"data":product});
+        res.json({"status":200,"data":product});
       } else {
-        res.json({"status":true,"msg":"Product does not exist" }).end();
+        res.json({"status":200,"msg":"Product does not exist" }).end();
       }
       return;
   });
@@ -68,15 +68,15 @@ module.exports.viewProduct = function(req,res,next) {
 
 /** api for viewing all products */
 module.exports.viewAllProducts = function(req,res,next) {
-  product.find({},function(err,products){
+  product.find({},{_id:0},function(err,products){
       if(err) {
         res.status(500).json({"status" : 500,"msg" : 'Internal error in fetching product'}).end();
         return;
       }
       if(products) {
-        res.json({"status":true,"data":products}).end();
+        res.json({"status":200,"data":products}).end();
       } else {
-        res.json({"status":true,"msg":"Product does not exist" }).end();
+        res.json({"status":200,"msg":"Product does not exist" }).end();
       }
       return;
   });
@@ -95,9 +95,9 @@ module.exports.editProduct = function(req,res,next) {
       return;
     }
     if(product) {
-      res.json({"status":true,"msg":"Successfully edited product details"}).end();
+      res.json({"status":200,"msg":"Successfully edited product details"}).end();
     } else {
-      res.json({"status":true,"msg":"Couldn't find product to update"}).end();
+      res.json({"status":200,"msg":"Couldn't find product to update"}).end();
     }
     return;
   });
